@@ -2,9 +2,9 @@
 
 namespace Cierrateam\NovaSortable\Http\Controllers;
 
+use Cierrateam\NovaSortable\Traits\HasSortableRows;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Nova;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class SortableController
 {

@@ -36,7 +36,7 @@ class ToolServiceProvider extends ServiceProvider
 
         Route::middleware(['nova'])
             ->prefix('nova-vendor/nova-sortable')
-            ->namespace('\OptimistDigital\NovaSortable\Http\Controllers')
+            ->namespace('\Cierrateam\NovaSortable\Http\Controllers')
             ->group(__DIR__ . '/../routes/api.php');
     }
 }
