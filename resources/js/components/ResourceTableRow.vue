@@ -25,39 +25,27 @@
       <!-- End reorder buttons -->
     </td>
 
-    <!-- Fields -->
-    <td v-for="field in resource.fields">
-      <component
-        :is="'index-' + field.component"
-        :class="`text-${field.textAlign}`"
-        :resource-name="resourceName"
-        :via-resource="viaResource"
-        :via-resource-id="viaResourceId"
-        :field="field"
-      />
-    </td>
-
     <td class="td-fit text-right pr-6 align-middle">
       <div class="inline-flex items-center">
         <!-- Actions Menu -->
         <inline-action-selector
-          v-if="availableActions.length > 0"
-          class="mr-3"
-          :resource="resource"
-          :resource-name="resourceName"
-          :actions="availableActions"
-          :endpoint="actionsEndpoint"
-          @actionExecuted="$emit('actionExecuted')"
+            v-if="availableActions.length > 0"
+            class="mr-3"
+            :resource="resource"
+            :resource-name="resourceName"
+            :actions="availableActions"
+            :endpoint="actionsEndpoint"
+            @actionExecuted="$emit('actionExecuted')"
         />
 
         <!-- View Resource Link -->
         <span v-if="resource.authorizedToView" class="inline-flex">
           <router-link
-            :data-testid="`${testId}-view-button`"
-            :dusk="`${resource['id'].value}-view-button`"
-            class="cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center"
-            v-tooltip.click="__('View')"
-            :to="{
+              :data-testid="`${testId}-view-button`"
+              :dusk="`${resource['id'].value}-view-button`"
+              class="cursor-pointer text-70 hover:text-primary mr-3 inline-flex items-center"
+              v-tooltip.click="__('View')"
+              :to="{
               name: 'detail',
               params: {
                 resourceName: resourceName,
@@ -72,11 +60,11 @@
         <span v-if="resource.authorizedToUpdate" class="inline-flex">
           <!-- Edit Pivot Button -->
           <router-link
-            v-if="relationshipType == 'belongsToMany' || relationshipType == 'morphToMany'"
-            class="inline-flex cursor-pointer text-70 hover:text-primary mr-3"
-            :dusk="`${resource['id'].value}-edit-attached-button`"
-            v-tooltip.click="__('Edit Attached')"
-            :to="{
+              v-if="relationshipType == 'belongsToMany' || relationshipType == 'morphToMany'"
+              class="inline-flex cursor-pointer text-70 hover:text-primary mr-3"
+              :dusk="`${resource['id'].value}-edit-attached-button`"
+              v-tooltip.click="__('Edit Attached')"
+              :to="{
               name: 'edit-attached',
               params: {
                 resourceName: viaResource,
@@ -94,10 +82,10 @@
 
           <!-- Edit Resource Link -->
           <router-link
-            v-else
-            class="inline-flex cursor-pointer text-70 hover:text-primary mr-3"
-            :dusk="`${resource['id'].value}-edit-button`"
-            :to="{
+              v-else
+              class="inline-flex cursor-pointer text-70 hover:text-primary mr-3"
+              :dusk="`${resource['id'].value}-edit-button`"
+              :to="{
               name: 'edit',
               params: {
                 resourceName: resourceName,
@@ -109,7 +97,7 @@
                 viaRelationship: viaRelationship,
               },
             }"
-            v-tooltip.click="__('Edit')"
+              v-tooltip.click="__('Edit')"
           >
             <icon type="edit" />
           </router-link>
@@ -117,33 +105,33 @@
 
         <!-- Delete Resource Link -->
         <button
-          :data-testid="`${testId}-delete-button`"
-          :dusk="`${resource['id'].value}-delete-button`"
-          class="inline-flex appearance-none cursor-pointer text-70 hover:text-primary mr-3"
-          v-tooltip.click="__(viaManyToMany ? 'Detach' : 'Delete')"
-          v-if="resource.authorizedToDelete && (!resource.softDeleted || viaManyToMany)"
-          @click.prevent="openDeleteModal"
+            :data-testid="`${testId}-delete-button`"
+            :dusk="`${resource['id'].value}-delete-button`"
+            class="inline-flex appearance-none cursor-pointer text-70 hover:text-primary mr-3"
+            v-tooltip.click="__(viaManyToMany ? 'Detach' : 'Delete')"
+            v-if="resource.authorizedToDelete && (!resource.softDeleted || viaManyToMany)"
+            @click.prevent="openDeleteModal"
         >
           <icon />
         </button>
 
         <!-- Restore Resource Link -->
         <button
-          :dusk="`${resource['id'].value}-restore-button`"
-          class="appearance-none cursor-pointer text-70 hover:text-primary mr-3"
-          v-if="resource.authorizedToRestore && resource.softDeleted && !viaManyToMany"
-          v-tooltip.click="__('Restore')"
-          @click.prevent="openRestoreModal"
+            :dusk="`${resource['id'].value}-restore-button`"
+            class="appearance-none cursor-pointer text-70 hover:text-primary mr-3"
+            v-if="resource.authorizedToRestore && resource.softDeleted && !viaManyToMany"
+            v-tooltip.click="__('Restore')"
+            @click.prevent="openRestoreModal"
         >
           <icon type="restore" with="20" height="21" />
         </button>
 
         <portal to="modals" transition="fade-transition" v-if="deleteModalOpen || restoreModalOpen">
           <delete-resource-modal
-            v-if="deleteModalOpen"
-            @confirm="confirmDelete"
-            @close="closeDeleteModal"
-            :mode="viaManyToMany ? 'detach' : 'delete'"
+              v-if="deleteModalOpen"
+              @confirm="confirmDelete"
+              @close="closeDeleteModal"
+              :mode="viaManyToMany ? 'detach' : 'delete'"
           >
             <div slot-scope="{ uppercaseMode, mode }" class="p-8">
               <heading :level="2" class="mb-6">{{ __(uppercaseMode + ' Resource') }}</heading>
@@ -164,6 +152,19 @@
         </portal>
       </div>
     </td>
+
+    <!-- Fields -->
+    <td v-for="field in resource.fields">
+      <component
+        :is="'index-' + field.component"
+        :class="`text-${field.textAlign}`"
+        :resource-name="resourceName"
+        :via-resource="viaResource"
+        :via-resource-id="viaResourceId"
+        :field="field"
+      />
+    </td>
+
   </tr>
 </template>
 

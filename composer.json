@@ -1,5 +1,5 @@
 {
-  "name": "optimistdigital/nova-sortable",
+  "name": "cierrateam/nova-sortable",
   "description": "This Laravel Nova package allows you to reorder models in a Nova resource's index view using drag & drop.",
   "keywords": [
     "laravel",
@@ -16,13 +16,13 @@
   },
   "autoload": {
     "psr-4": {
-      "OptimistDigital\\NovaSortable\\": "src/"
+      "Cierrateam\\NovaSortable\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "OptimistDigital\\NovaSortable\\ToolServiceProvider"
+        "Cierrateam\\NovaSortable\\ToolServiceProvider"
       ]
     }
   },

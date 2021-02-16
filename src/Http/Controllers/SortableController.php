@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\NovaSortable\Http\Controllers;
+namespace Cierrateam\NovaSortable\Http\Controllers;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Nova;
