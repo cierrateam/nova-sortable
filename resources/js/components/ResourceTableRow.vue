@@ -4,21 +4,21 @@
     <td class="w-16" v-if="shouldShowCheckboxes || canSeeReorderButtons">
       <!-- Reorder buttons -->
       <reorder-buttons
-        :resource="resource"
-        :relationship-type="relationshipType"
-        :via-resource-id="viaResourceId"
-        :via-relationship="viaRelationship"
-        :resource-name="resourceName"
-        @moveToEnd="$emit('moveToEnd')"
-        @moveToStart="$emit('moveToStart')"
+          :resource="resource"
+          :relationship-type="relationshipType"
+          :via-resource-id="viaResourceId"
+          :via-relationship="viaRelationship"
+          :resource-name="resourceName"
+          @moveToEnd="$emit('moveToEnd')"
+          @moveToStart="$emit('moveToStart')"
       >
         <template slot="checkbox">
           <checkbox
-            :data-testid="`${testId}-checkbox`"
-            :dusk="`${resource['id'].value}-checkbox`"
-            v-if="shouldShowCheckboxes"
-            :checked="checked"
-            @input="toggleSelection"
+              :data-testid="`${testId}-checkbox`"
+              :dusk="`${resource['id'].value}-checkbox`"
+              v-if="shouldShowCheckboxes"
+              :checked="checked"
+              @input="toggleSelection"
           />
         </template>
       </reorder-buttons>
@@ -156,12 +156,12 @@
     <!-- Fields -->
     <td v-for="field in resource.fields">
       <component
-        :is="'index-' + field.component"
-        :class="`text-${field.textAlign}`"
-        :resource-name="resourceName"
-        :via-resource="viaResource"
-        :via-resource-id="viaResourceId"
-        :field="field"
+          :is="'index-' + field.component"
+          :class="`text-${field.textAlign}`"
+          :resource-name="resourceName"
+          :via-resource="viaResource"
+          :via-resource-id="viaResourceId"
+          :field="field"
       />
     </td>
 

@@ -12,6 +12,9 @@
         <!-- Select Checkbox -->
         <th class="w-16" v-if="shouldShowCheckboxes || canSeeReorderButtons">&nbsp;</th>
 
+        <!-- Actions, View, Edit, Delete -->
+        <th>&nbsp;</th>
+
         <!-- Field Names -->
         <th v-for="field in fields" :class="`text-${field.textAlign}`">
           <sortable-icon
@@ -27,8 +30,6 @@
           <span v-else>{{ field.indexName }}</span>
         </th>
 
-        <!-- Actions, View, Edit, Delete -->
-        <th>&nbsp;</th>
       </tr>
     </thead>
     <draggable v-model="resources" tag="tbody" handle=".handle" @update="updateOrder">
